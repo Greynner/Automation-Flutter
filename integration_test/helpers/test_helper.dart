@@ -8,7 +8,8 @@ class TestHelper {
   static void initialize() {
     _binding = IntegrationTestWidgetsFlutterBinding.ensureInitialized()
         as IntegrationTestWidgetsFlutterBinding;
-    _binding?.framePolicy = LiveTestWidgetsFlutterBindingFramePolicy.fullyLive;
+    // Nota: IntegrationTestWidgetsFlutterBinding no tiene framePolicy
+    // Los integration tests ya se ejecutan en modo "fully live" por defecto
   }
 
   /// Obtiene el binding actual

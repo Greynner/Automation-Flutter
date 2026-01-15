@@ -21,3 +21,10 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  # Assets del paquete my_vault (necesarios en el proyecto raíz para tests de integración)
+  # También se incluyen desde el proyecto raíz para que Flutter los encuentre
+  assets:
+    - assets/images/
+    - assets/fonts/
+    - e-wallet/assets/images/
+    - e-wallet/assets/fonts/
