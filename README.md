@@ -1,4 +1,4 @@
-# Automation Interview Littio
+# Automation Flutter
 
 A practice repo for **manual QAs who want to learn mobile automation with Flutter**.
 
