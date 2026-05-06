@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Script para ejecutar los tests de integración
-# Uso: ./run_tests.sh [test_file]
+# Uso: ./run_tests.sh [test_file] [device_id]
+# Ejemplo: ./run_tests.sh integration_test/login_test.dart macos
 
 echo "🚀 Ejecutando tests de integración Flutter..."
 
@@ -20,12 +21,20 @@ echo "📱 Dispositivos disponibles:"
 flutter devices
 
 # Ejecutar tests
+TEST_TARGET=${1:-integration_test/}
+DEVICE_ID=${2:-${DEVICE_ID:-}}
+
+DEVICE_ARGS=()
+if [ -n "$DEVICE_ID" ]; then
+    DEVICE_ARGS=(-d "$DEVICE_ID")
+fi
+
 if [ -z "$1" ]; then
     echo "🧪 Ejecutando todos los tests..."
-    flutter test integration_test/
 else
-    echo "🧪 Ejecutando test: $1"
-    flutter test "$1"
+    echo "🧪 Ejecutando test: $TEST_TARGET"
 fi
+
+flutter test "$TEST_TARGET" "${DEVICE_ARGS[@]}"
 
 echo "✅ Tests completados!"
